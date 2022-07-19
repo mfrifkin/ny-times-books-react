@@ -32,7 +32,8 @@ function App() {
             coverImageURL={book.book_image}
             wksOnList={book.weeks_on_list}
             description={book.description}
-            key={book.primary_isbn10} />
+            key={book.primary_isbn10}
+            links={book.buy_links} />
         ))}
        
       </section>
