@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import '../styles/Dropdown.css'
-const DropDown = ({links}) => {
+
+const DropDown = ({ links }) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const handleClickAway = () => {
@@ -16,19 +17,16 @@ const DropDown = ({links}) => {
         condition ? wrapper(children) : children;
 
     return (
-        <ConditionalWrapper condition={isOpen}
-            wrapper={children => <ClickAwayListener onClickAway={handleClickAway}>{children}</ClickAwayListener>}>
-            <div className="">
-                <button className="dropdown-btn" onClick={() => setIsOpen(!isOpen)}>Buy</button>
+        <ClickAwayListener onClickAway={handleClickAway}>
+            <div className='dropdown'>
+                <button className="dropdown-btn" onClick={() => setIsOpen(!isOpen)}>BUY</button>
                 <div className={isOpen ? 'dropdown-menu active' : 'dropdown-menu'}>
-                    <a href="https://www.youtube.com/watch?v=ZllOiG6FWas" target="_blank" onClick={() => setIsOpen(!isOpen)} >content</a>
-                    {/* {links.map((link,index)=>(
-                        <div href={link.url}>{link.name}</div>
-                    ))} */}
+                    {links.map((link, index) => (
+                        <a href={link.url} onClick={handleClickAway} rel="noreferrer" className='item' target="_blank">{link.name}</a>
+                    ))}
                 </div>
             </div>
-        </ConditionalWrapper>
-
+        </ClickAwayListener>
     )
 }
 
