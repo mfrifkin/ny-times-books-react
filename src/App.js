@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div className="App">
-      <section className='books-container'>
+      <section className='books-container snaps-inline'>
         {books.slice(0,5).map((book, index) => (
           <Book author={book.author}
             title={book.title}

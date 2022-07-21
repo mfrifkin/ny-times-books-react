@@ -1,7 +1,8 @@
 
 
 .card{
-    /* width: 200px; */
+    display: flex;
+    flex-direction: column;
     flex: 0 4  290px;
     padding: 0px 15px 0px 15px;
     position: relative;
@@ -64,5 +65,28 @@
 
 }
 
+/* smaller screen */
+@media(max-width: 1024px){
+    .desc{
+        display:none
+    }
 
+    .coverImage{
+        width:100px
+    }
+}
 
+/* mobile --> set up horizontal scroll details on App.css */
+@media(max-width: 800px){
+    .card{
+        flex-basis:270px
+    }
+
+    .coverImage{
+        width:140px
+    }
+
+    .card{
+        flex-shrink: 0;
+    }
+}
