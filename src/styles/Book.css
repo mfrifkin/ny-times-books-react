@@ -1,13 +1,15 @@
-
-
 .card{
     display: flex;
     flex-direction: column;
     flex: 0 4  290px;
     padding: 0px 15px 0px 15px;
     position: relative;
-    border-right: 2px solid #d0d0d0;
+    
     margin-top: 20px;
+}
+
+.card:not(:last-child){
+    border-right: 2px solid #d0d0d0;
 }
 
 .card::before{

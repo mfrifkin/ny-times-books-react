@@ -28,7 +28,9 @@ function App() {
   return (
     <div className="App">
       {bookLists.slice(0, 8).map((genre, index) => (
-         <BookList listOfBooks={genre.books} />
+         <BookList listOfBooks={genre.books} 
+                  genreHeading={genre.list_name}
+         />
       ))}
     </div>
   );
