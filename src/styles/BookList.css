@@ -1,0 +1,84 @@
+.books-section{
+    /* border-bottom: 2px solid #d0d0d0; */
+}
+
+.books-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    counter-reset: book-num;
+    padding-bottom: 30px;
+  }
+
+
+
+.genre-heading {
+    font-size: 25px;
+    font-weight: bolder;
+    margin-left: 20px;
+    margin-top: 30px;
+}  
+
+/* little hollow arrow (rotated square w/2 borders) */
+.genre-heading::after{
+    display: inline-block;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    border: solid black 2px;
+    border-left-color: transparent;
+    border-bottom-color:transparent;
+    transform: rotate(45deg);
+    width:7px;
+    height: 7px;
+    content:'';
+}
+
+.purchase-text{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color:#262626;
+}
+
+.purchase-text::after{
+    content: ' ';
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width:97%;
+    height: 2px;
+    display: block;
+    background:#d0d0d0;
+}
+
+
+  /* mobile render */
+  @media(max-width: 800px) {
+    .books-container {
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+      overflow-y: hidden;
+    }
+    
+    .snaps-inline{
+      scroll-snap-type: inline mandatory;
+    }
+  
+    .snaps-inline > *{
+      scroll-snap-align: start;
+  
+    }
+  
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .books-container::-webkit-scrollbar {
+      display: none;
+    }
+    .books-container {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+
+    .purchase-text{
+        text-align: left;
+    }
+  
+  }

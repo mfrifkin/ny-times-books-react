@@ -14,7 +14,7 @@
     transition: opacity 150ms ease-out, ;
     position: absolute;
     top:calc(100% + .25rem);
-    z-index:-2;
+    z-index:1;
     border: solid 1px grey
 
 }
