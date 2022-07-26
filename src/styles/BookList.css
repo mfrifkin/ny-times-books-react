@@ -10,14 +10,20 @@
     padding-bottom: 30px;
   }
 
-
-
 .genre-heading {
     font-size: 25px;
     font-weight: bolder;
     margin-left: 20px;
-    margin-top: 30px;
+    /* margin-top: 30px; */
 }  
+
+.genre-link{
+  display: table;
+}
+
+.genre-link:hover{
+  text-decoration: underline;
+}
 
 /* little hollow arrow (rotated square w/2 borders) */
 .genre-heading::after{
@@ -44,6 +50,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
+    margin-bottom: 25px;
     width:97%;
     height: 2px;
     display: block;

@@ -1,10 +1,13 @@
 import '../styles/BookList.css'
 import Book from './Book'
+import { Link } from 'react-router-dom'
 
 const BookList = ({ listOfBooks, genreHeading }) => {
     return (
         <section className='books-section'>
-            <h4 className='genre-heading'>{genreHeading.replace('and', '&')}</h4>
+            <Link className='genre-link'to={genreHeading}>
+                <h4 className='genre-heading'>{genreHeading.replace('and', '&')}</h4>
+            </Link>
             <div className='books-container snaps-inline'>
                 {listOfBooks.map((book, index) => (
                     <Book author={book.author}
