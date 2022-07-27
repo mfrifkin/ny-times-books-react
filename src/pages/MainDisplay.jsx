@@ -29,7 +29,9 @@ function MainDisplay() {
     <div>
       {bookLists.slice(0, 8).map((genre, index) => (
          <BookList listOfBooks={genre.books} 
-                  genreHeading={genre.list_name}
+                   genreHeading={genre.list_name}
+                   genreEncoded={genre.list_name_encoded}
+                   key={index}
          />
       ))}
     </div>
