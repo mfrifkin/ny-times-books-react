@@ -8,7 +8,6 @@ const DropDown = ({ links }) => {
     const handleClickAway = () => {
         if (isOpen) {
             setIsOpen(false)
-
         }
     };
 
@@ -22,7 +21,14 @@ const DropDown = ({ links }) => {
                 <button className="dropdown-btn" onClick={() => setIsOpen(!isOpen)}>BUY</button>
                 <div className={isOpen ? 'dropdown-menu active' : 'dropdown-menu'}>
                     {links.map((link, index) => (
-                        <a href={link.url} onClick={handleClickAway} rel="noreferrer" className='item' target="_blank">{link.name}</a>
+                        <a href={link.url} 
+                           onClick={handleClickAway} 
+                           rel="noreferrer" 
+                           className='item' 
+                           target="_blank"
+                           key={index}>
+                           {link.name}
+                        </a>
                     ))}
                 </div>
             </div>

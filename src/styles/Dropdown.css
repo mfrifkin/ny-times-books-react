@@ -1,8 +1,7 @@
 .dropdown{
    margin-top: auto;
+   position: relative;
 }
-
-
 
 .dropdown-menu{
     background-color: white;
@@ -14,7 +13,7 @@
     transition: opacity 150ms ease-out, ;
     position: absolute;
     top:calc(100% + .25rem);
-    z-index:-2;
+    z-index:1;
     border: solid 1px grey
 
 }
@@ -27,12 +26,13 @@
 .dropdown-btn{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: .85rem;
     color: white;
     background-color: #537e9f;
-    padding: .4rem 1.5rem .4rem 1rem;
+    padding: .3rem 1.4rem .3rem .9rem;
     border-radius: 5%;
     border: solid 1px #264f6f;
+    position: relative;
 
 }
 
@@ -45,7 +45,7 @@
     border: solid .3rem transparent;
     border-top-color: rgb(255, 255, 255);
     position: absolute;
-    bottom: 8px;
+    bottom: 6px;
     margin-left:4px
  
 }
@@ -58,7 +58,7 @@
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
     color: #326892;
-    font-size: 1.2rem;
+    font-size: .85rem;
 }
 
 .item:hover{
