@@ -27,7 +27,7 @@ const SingleGenreDisplay = () => {
     }, [])
 
     return (
-      <div>
+      <div style={{counterReset: 'book-rank'}}>
            {/* <Xbook author={bookList[0].author}
                         title={bookList[0].title}
                         coverImageURL={bookList[0].book_image}

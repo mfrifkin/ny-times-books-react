@@ -12,6 +12,8 @@ a{
 body{
   padding-left: 20px;
   padding-right: 20px;
+   height: 100%;
+  
 }
 
 h4{
@@ -27,3 +29,4 @@ h4{
 .times-new-roman{
   font-family: 'Times New Roman', Times, serif;
 }
+

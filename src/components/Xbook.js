@@ -6,14 +6,14 @@ function Xbook({ title, coverImageURL, author, wksOnList, description, links }) 
 
   return (
     <div className='x-book-container'>
-      <img style={{order:2,width:'120px'}} src={coverImageURL}></img>
+      <img style={{order:2,width:'auto',height:'135px', marginLeft:'auto'}} src={coverImageURL}></img>
       <div className='left-container'>
         {wksOnList > 1 ?
-          (<div >{wksOnList} WEEKS ON THE LIST</div>)
-          : (<div>NEW THIS WEEK</div>)}
-        <div >{title}</div>
-        <div >by {author}</div>
-        <p >{description}</p>
+          (<div className='numWks'>{wksOnList} WEEKS ON THE LIST</div>)
+          : (<div className='numWks' >NEW THIS WEEK</div>)}
+        <div className='title'>{title}</div>
+        <div className='author'>by {author}</div>
+        <p className=' x-desc'>{description}</p>
         <Dropdown links={links} />
       </div>
     </div>
