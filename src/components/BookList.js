@@ -1,10 +1,13 @@
 import '../styles/BookList.css'
 import Book from './Book'
+import { Link } from 'react-router-dom'
 
-const BookList = ({ listOfBooks, genreHeading }) => {
+const BookList = ({ listOfBooks, genreHeading, genreEncoded }) => {
     return (
         <section className='books-section'>
-            <h4 className='genre-heading'>{genreHeading.replace('and', '&')}</h4>
+            <Link className='genre-link' to={genreEncoded}>
+                <h4 className='genre-heading'>{genreHeading.replace('and', '&')}</h4>
+            </Link>
             <div className='books-container snaps-inline'>
                 {listOfBooks.map((book, index) => (
                     <Book author={book.author}
@@ -16,7 +19,7 @@ const BookList = ({ listOfBooks, genreHeading }) => {
                         links={book.buy_links} />
                 ))}
             </div>
-            <p className='purchase-text'>When you purchase an independently ranked book through our site, we earn an affiliate commission.</p>
+            {/* <p className='purchase-text'>When you purchase an independently ranked book through our site, we earn an affiliate commission.</p> */}
         </section>
     )
 }
