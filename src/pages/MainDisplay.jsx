@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react'
 import axios from 'axios';
 import Book from '../components/Book'
 import BookList from '../components/BookList';
-
+import Header from '../components/Header';
+import Title from '../components/Title';
+import Navbar from '../components/Navbar';
 function MainDisplay() {
 
   //state
@@ -27,6 +29,13 @@ function MainDisplay() {
 
   return (
     <div>
+
+      <Title 
+        title={'The New York Times Best Sellers'} 
+        showSubHeading={true} 
+        subheading={'Authoritatively ranked lists of books sold in the United States, sorted by format and genre'}
+      />
+      <Navbar/>
       {bookLists.slice(0, 8).map((genre, index) => (
          <BookList listOfBooks={genre.books} 
                    genreHeading={genre.list_name}
