@@ -6,7 +6,7 @@ import Xbook from '../components/Xbook'
 import BookList from '../components/BookList'
 import Title from '../components/Title'
 import { useLocation } from 'react-router-dom'
-
+import Navbar from '../components/Navbar'
 const SingleGenreDisplay = () => {
     const [bookList, setBookList] = useState([])
     const { genre } = useParams();
@@ -34,6 +34,7 @@ const SingleGenreDisplay = () => {
     return (
         <div>
             <Title title={location.state.title.replace('and','&')} showSubHeading={false}/>
+            <Navbar/>
             <div style={{ counterReset: 'book-rank' }}>
 
                 {bookList.map((book, index) => (
