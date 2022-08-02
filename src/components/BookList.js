@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const BookList = ({ listOfBooks, genreHeading, genreEncoded }) => {
     return (
         <section className='books-section'>
-            <Link className='genre-link' to={genreEncoded}>
+            <Link className='genre-link' to={genreEncoded} state={{title:genreHeading}}>
                 <h4 className='genre-heading'>{genreHeading.replace('and', '&')}</h4>
             </Link>
             <div className='books-container snaps-inline'>
