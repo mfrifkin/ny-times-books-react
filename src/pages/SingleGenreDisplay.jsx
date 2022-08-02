@@ -4,9 +4,14 @@ import axios from 'axios'
 import Book from '../components/Book'
 import Xbook from '../components/Xbook'
 import BookList from '../components/BookList'
+import Title from '../components/Title'
+import { useLocation } from 'react-router-dom'
+import Navbar from '../components/Navbar'
 const SingleGenreDisplay = () => {
     const [bookList, setBookList] = useState([])
     const { genre } = useParams();
+    const location = useLocation()
+    console.log(location.state)
 
     const getBookList = async (genre) => {
         try {
@@ -23,19 +28,16 @@ const SingleGenreDisplay = () => {
     useEffect(() => {
         // get top 5 books from each genre
         getBookList(genre)
-        
+
     }, [])
 
     return (
-      <div style={{counterReset: 'book-rank'}}>
-           {/* <Xbook author={bookList[0].author}
-                        title={bookList[0].title}
-                        coverImageURL={bookList[0].book_image}
-                        wksOnList={bookList[0].weeks_on_list}
-                        description={bookList[0].description}
-                        key={bookList[0].primary_isbn10}
-                        links={bookList[0].buy_links} /> */}
-                         {bookList.map((book, index) => (
+        <div>
+            <Title title={location.state.title.replace('and','&')} showSubHeading={false}/>
+            <Navbar/>
+            <div style={{ counterReset: 'book-rank' }}>
+
+                {bookList.map((book, index) => (
                     <Xbook author={book.author}
                         title={book.title}
                         coverImageURL={book.book_image}
@@ -44,8 +46,9 @@ const SingleGenreDisplay = () => {
                         key={book.primary_isbn10}
                         links={book.buy_links} />
                 ))}
+            </div>
 
-      </div>
+        </div>
     )
 }
 
