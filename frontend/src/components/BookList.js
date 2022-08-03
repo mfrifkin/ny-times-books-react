@@ -19,7 +19,7 @@ const BookList = ({ listOfBooks, genreHeading, genreEncoded }) => {
                         links={book.buy_links} />
                 ))}
             </div>
-            {/* <p className='purchase-text'>When you purchase an independently ranked book through our site, we earn an affiliate commission.</p> */}
+            <p className='purchase-text'>When you purchase an independently ranked book through our site, we earn an affiliate commission.</p>
         </section>
     )
 }
