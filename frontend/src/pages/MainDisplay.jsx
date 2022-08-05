@@ -22,9 +22,14 @@ function MainDisplay() {
     }
   }
 
+  const getReviews = async ()=>{
+    const response = await axios.get('http://localhost:5000/api/reviews/')
+    console.log(response.data)
+  } 
   useEffect(() => {
     // get top 5 books from each genre
     getBookLists()
+    getReviews()
   }, [])
 
   return (
