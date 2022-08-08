@@ -11,13 +11,10 @@ const SingleGenreDisplay = () => {
     const [bookList, setBookList] = useState([])
     const { genre } = useParams();
     const location = useLocation()
-    console.log(location.state)
 
     const getBookList = async (genre) => {
         try {
-            console.log(`https://api.nytimes.com/svc/books/v3/lists/current/${genre}.json?api-key=${process.env.REACT_APP_NY_TIMES_API_KEY}`)
             const result = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/${genre}.json?api-key=${process.env.REACT_APP_NY_TIMES_API_KEY}`)
-            console.log(result.data.results.books)
             setBookList(result.data.results.books)
         } catch (error) {
             console.log('something went wrong with call to nytimes' + error)
@@ -29,7 +26,7 @@ const SingleGenreDisplay = () => {
         // get top 5 books from each genre
         getBookList(genre)
 
-    }, [])
+    }, [genre])
 
     return (
         <div>

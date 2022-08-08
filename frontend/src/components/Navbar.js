@@ -1,11 +1,15 @@
 import '../styles/Navbar.css'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { useState } from 'react';
 const Navbar = () => {
+    const [count, setCount]= useState(0)
     const navigate = useNavigate();
     const changeMe = (value, event) => {
         const index = event.nativeEvent.target.selectedIndex;
         const title = event.nativeEvent.target[index].text;
         navigate(`/${value}`, { state: { title: title } })
+        event.nativeEvent.target.selectedIndex = 0;
+
     }
 
     return (

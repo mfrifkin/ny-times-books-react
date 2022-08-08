@@ -13,7 +13,7 @@ router.get('/google', passport.authenticate('google', { scope: ['profile'] }))
 //@route GET /google/auth/callback
 router.get('/google/callback', passport.authenticate('google',
     { failureRedirect: '/' }), (req, res) => {
-        res.redirect('http://localhost:3000')
+        res.redirect('/')
     })
 
 //@desc logout
