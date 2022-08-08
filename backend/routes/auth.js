@@ -1,5 +1,4 @@
 const express = require('express')
-const { reset } = require('nodemon')
 const passport = require('passport')
 const router = express.Router()
 
