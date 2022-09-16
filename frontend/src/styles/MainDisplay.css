@@ -19,7 +19,7 @@
   
     .snaps-inline > *{
       scroll-snap-align: start;
-  
+
     }
   
     /* Hide scrollbar for Chrome, Safari and Opera */

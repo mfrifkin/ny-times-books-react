@@ -39,7 +39,6 @@ function MainDisplay() {
         showSubHeading={true} 
         subheading={'Authoritatively ranked lists of books sold in the United States, sorted by format and genre'}
       />
-      <a href="/auth/google">login</a>
       <Navbar/>
       {bookLists.slice(0, 8).map((genre, index) => (
          <BookList listOfBooks={genre.books} 
