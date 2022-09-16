@@ -63,9 +63,9 @@
 
   @media(max-width: 800px) {
     .books-container {
-      overflow-x: auto;
+      overflow-x: auto; 
       overscroll-behavior-inline: contain;
-      overflow-y: hidden;
+       overflow-y: hidden;
     }
     
     .snaps-inline{

@@ -15,21 +15,25 @@ function MainDisplay() {
   const getBookLists = async () => {
     try {
       const result = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=${process.env.REACT_APP_NY_TIMES_API_KEY}`)
-      console.log(result.data.results.lists)
       setBookLists(result.data.results.lists)
     } catch (error) {
       console.log('something went wrong with call to nytimes' + error)
     }
   }
 
+  const getReviews = async ()=>{
+    const response = await axios.get('/api/reviews/')
+    console.log(response)
+  } 
+
   useEffect(() => {
     // get top 5 books from each genre
     getBookLists()
+    getReviews()
   }, [])
 
   return (
     <div>
-
       <Title 
         title={'The New York Times Best Sellers'} 
         showSubHeading={true} 
