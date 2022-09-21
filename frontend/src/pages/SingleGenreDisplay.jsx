@@ -7,6 +7,8 @@ import BookList from '../components/BookList'
 import Title from '../components/Title'
 import { useLocation } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+
+
 const SingleGenreDisplay = () => {
     const [bookList, setBookList] = useState([])
     const { genre } = useParams();

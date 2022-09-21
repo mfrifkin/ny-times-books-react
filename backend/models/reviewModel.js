@@ -6,6 +6,18 @@ const reviewSchema = mongoose.Schema(
             type: String,
             required: [true, 'Please add a text value'],
         },
+        isbn: {
+            type: String,
+            required: [true, 'Please add an isbn, with love, your db'],
+        },
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+          },
 
     },
     {

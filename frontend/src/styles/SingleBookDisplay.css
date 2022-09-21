@@ -1,0 +1,17 @@
+.review{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0px 0px 0px;
+}
+
+.user-image{
+    border-radius: 50%;
+    height: 40px;
+    margin-right: 10px;
+
+}
+
+.name-and-review{
+    display: flex;
+    flex-direction: column;
+}
