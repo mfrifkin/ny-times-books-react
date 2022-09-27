@@ -17,28 +17,27 @@ function ReviewForm({postReview}) {
 
 
     const [review, setReview] = useState('')
-    const [placeHolder, setPlaceHolder] = useState('Add a review')
+    const [placeHolder, setPlaceHolder] = useState('What did you think of this book?')
 
     return (
-        <section >
+        < >
         <form onSubmit={onSubmit}>
-          <div className='form-group'>
-            {/* <label htmlFor='text'>Review</label> */}
-            <input
+            <textarea
+              className='reviewInput'
+              placeholder={placeHolder}
               type='text'
               name='text'
               id='text'
               value={review}
               onChange={(e) => setReview(e.target.value)}
             />
-          </div>
-          <div className='form-group'>
-            <button className='btn btn-block' type='submit'>
-              Add review
+          <div >
+            <button className='review-btn' type='submit'>
+              Add Review
             </button>
           </div>
         </form>
-      </section>
+      </>
     ) 
 }
 

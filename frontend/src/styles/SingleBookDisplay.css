@@ -1,7 +1,17 @@
+.picture-reviews-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reviews-container{
+    width: 50%;
+}
+
 .review{
     display: flex;
     flex-direction: row;
-    margin: 10px 0px 0px 0px;
+    margin: 20px 0px 0px 0px;
 }
 
 .user-image{
@@ -14,4 +24,15 @@
 .name-and-review{
     display: flex;
     flex-direction: column;
+}
+
+.userName{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:1rem;
+    font-weight: bold;
+}
+
+.reviewText{
+    color:#4a4a4a;
+    font-size: 1rem;
 }

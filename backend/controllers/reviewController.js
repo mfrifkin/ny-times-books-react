@@ -13,7 +13,7 @@ const getReviews = asyncHandler(async(req,res)=>{
     const reviews = await Review.find({isbn: req.params.isbn})
         .populate('user')
         .sort({createdAt:'desc'});
-    console.log(reviews)
+        
     res.status(200).json(reviews)
 })
 
@@ -40,7 +40,7 @@ const postReview = asyncHandler(async(req,res)=>{
     })
 
     const populatedReview = await Review.findById(review._id).populate('user')
-    
+
     res.status(200).json(populatedReview)
 })
 
