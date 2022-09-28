@@ -1,0 +1,25 @@
+.form-group{
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+}
+
+.reviewInput{
+    margin-bottom: 15px;
+    margin-top: 15px;
+    resize: none;
+    font-family: 'Times New Roman', Times, serif;
+    width: 100%;
+    font-size: .9rem;
+}
+
+.review-btn{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    font-size: .9rem;
+    color: white;
+    background-color: #537e9f;
+    padding: .3rem 1.4rem .3rem .9rem;
+    border-radius: 5%;
+    border: solid 1px #264f6f;
+}

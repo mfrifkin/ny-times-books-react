@@ -1,7 +1,7 @@
 .page-title{
     font-size: 50px;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    margin-left:10px;
+    /* margin-left:10px; */
     margin-top: 40px;
 }
 
@@ -9,7 +9,7 @@
     font-size: 15px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color:#5e5d5d;
-    margin-left:10px;
+    /* margin-left:10px; */
 }
 
 @media(max-width: 1150px){
