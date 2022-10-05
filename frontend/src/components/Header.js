@@ -10,8 +10,7 @@ const Header = () => {
   const [userIsLoggedIn, setUserIsLoggedIn] = useState(false)
 
   const getUserStatus = async () => {
-    const response = await axios.get('http://localhost:5000/auth/isloggedin')
-    console.log(response.data)
+    const response = await axios.get('/auth/isloggedin')
     setUserIsLoggedIn(response.data.status)
    
   }

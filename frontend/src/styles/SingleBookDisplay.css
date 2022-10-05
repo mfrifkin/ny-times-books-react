@@ -32,6 +32,7 @@
 .name-and-review{
     display: flex;
     flex-direction: column;
+    width:83%
 }
 
 .userName{
@@ -61,4 +62,11 @@
 
 .delete-button,.edit-button:hover{
     cursor: pointer;
+}
+
+.edit-input{
+    width:95%;
+    resize: none;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: .9rem;
 }

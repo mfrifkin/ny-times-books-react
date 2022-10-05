@@ -2,13 +2,11 @@ import { useState } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan, faEdit } from '@fortawesome/free-regular-svg-icons'
 
-
 const Review = ({ review, handleDeleteClick, handleUpdateReview, userId }) => {
     const [isEditing, setIsEditing] = useState(false)
     const [reviewInProgress, setReviewInProgress] = useState(review.text)
 
-
-    // toggles edit mode
+    // toggles edit model
     const toggleEdit = () => {
         setIsEditing((prev) => !prev)
         setReviewInProgress(review.text)
@@ -38,14 +36,15 @@ const Review = ({ review, handleDeleteClick, handleUpdateReview, userId }) => {
                 <div className='userName'>{review.user.displayName}</div>
                 {isEditing ?
                     <form className='edit-form' onSubmit={save}>
-                        <input
+                        <textarea
+                            className='edit-input'
                             type='text'
                             name='text'
                             id='text'
                             value={reviewInProgress}
                             onChange={(e) => setReviewInProgress(e.target.value)}
                         />
-                        <input type='submit' value='save' />
+                        <input className='' type='submit' value='save' />
                         <button onClick={cancelEdit}>cancel</button>
                     </form>
                     :
