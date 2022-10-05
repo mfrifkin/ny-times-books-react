@@ -8,8 +8,8 @@ router.get('/:isbn', getReviews)
 
 router.post('/', ensureAuth, postReview)
 
-router.put('/:id', updateReview)
+router.put('/:id', ensureAuth, updateReview)
 
-router.delete('/:id', deleteReview)
+router.delete('/:id', ensureAuth, deleteReview)
 
 module.exports = router

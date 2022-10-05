@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 function Book({ title, coverImageURL, author, wksOnList, description, links, isbn }) {
   return (
     <div className='card'>
-      <Link className='genre-link' to='book/favbook' state={{ coverImageURL, title, author, wksOnList, description, links, isbn }}>
+      <Link className='genre-link' to={`book/${title}`} state={{ coverImageURL, title, author, wksOnList, description, links, isbn }}>
         <img className='coverImage' src={coverImageURL}></img>
       </Link>
       {wksOnList > 1 ?

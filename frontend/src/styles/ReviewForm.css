@@ -22,4 +22,17 @@
     padding: .3rem 1.4rem .3rem .9rem;
     border-radius: 5%;
     border: solid 1px #264f6f;
+    box-shadow: 0 2px #999;
 }
+
+.review-btn:hover {
+    background-color: #3a586e;
+    cursor: pointer
+
+}
+
+.review-btn:active {
+    background-color: #3a586e;
+    box-shadow: 0 0px #666;
+    transform: translateY(3px);
+  }

@@ -8,10 +8,18 @@
     width: 50%;
 }
 
+@media(max-width: 800px){
+   .reviews-container{
+        width:100%;
+        margin-top: 5px;
+   }
+}
+
 .review{
     display: flex;
     flex-direction: row;
     margin: 20px 0px 0px 0px;
+    
 }
 
 .user-image{
@@ -35,4 +43,22 @@
 .reviewText{
     color:#4a4a4a;
     font-size: 1rem;
+}
+
+.user-message{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    margin-top: 20px;
+}
+
+.delete-button{
+    margin-right: 5px;
+
+}
+.edit-delete-btns-container{
+    margin-left: auto;
+}
+
+.delete-button,.edit-button:hover{
+    cursor: pointer;
 }

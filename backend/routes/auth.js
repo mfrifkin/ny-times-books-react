@@ -23,6 +23,18 @@ router.get('/logout',ensureAuth, (req,res,next)=>{
     res.redirect('/')
 })
 
+//@desc returns logged in status and id
+//@route GET /auth/isloggedin
+router.get('/isloggedin', (req,res)=>{
+    let status = false
+    let id = 0
+    if(req.isAuthenticated()){
+        status = true;
+        id = req.user.id
+    }
+    
+    res.status(200).json({status,id})
+})
 
 
 module.exports = router
