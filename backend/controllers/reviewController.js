@@ -50,7 +50,7 @@ const postReview = asyncHandler(async(req,res)=>{
 const updateReview = asyncHandler(async(req,res)=>{
     //find current review
     const review = await Review.findById(req.params.id)
-
+    console.log(req.body)
     if (!review) {
       res.status(400)
       throw new Error('Review not found')
@@ -59,7 +59,7 @@ const updateReview = asyncHandler(async(req,res)=>{
     //update current review with new text
     const updatedReview = await Review.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
-    })
+    }).populate('user')
 
     //send new review back to client
     res.status(200).json(updatedReview)

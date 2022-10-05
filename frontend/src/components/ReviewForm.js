@@ -5,16 +5,13 @@ function ReviewForm({postReview}) {
     const onSubmit =(e)=>{
         e.preventDefault()
         if(review){
-            console.log('sending review')
             postReview(review)
-
+            setReview('')
         }
         else{
            console.log('no goal')
         }
-       
     }
-
 
     const [review, setReview] = useState('')
     const [placeHolder, setPlaceHolder] = useState('What did you think of this book?')

@@ -13,58 +13,55 @@ const SingleBookDisplay = () => {
   const [reviews, setReviews] = useState([])
   const [userIsLoggedIn, setUserIsLoggedIn] = useState(false)
   const [userId, setUserId] = useState('')
-
-
   const location = useLocation()
-  const API_URL = 'http://localhost:5000/api/reviews/'
+  const API_URL = '/api/reviews/'
 
   const postReview = async (text, isbn) => {
     const response = await axios.post(API_URL, { text, isbn })
-    console.log(response.data)
     setReviews([...reviews, response.data])
   }
 
   const getReviews = async (isbn) => {
     const response = await axios.get(API_URL + isbn)
-    console.log(response.data)
     setReviews(response.data)
   }
 
   const getUserStatus = async () => {
-    const response = await axios.get('http://localhost:5000/auth/isloggedin')
-    console.log(response.data)
+    const response = await axios.get('/auth/isloggedin')
     setUserIsLoggedIn(response.data.status)
     setUserId(response.data.id)
-
   }
 
   const deleteReview = async (reviewId) => {
     const response = await axios.delete(API_URL + reviewId)
-    console.log(response.data)
     setReviews(reviews.filter((review) => (review._id !== response.data.id)))
   }
 
   const handleDeleteClick = (reviewId) => {
-    console.log(`deleting review ${reviewId}`)
     deleteReview(reviewId)
   }
 
-  const handleEditClick = (reviewId) => {
-    console.log(`editing review ${reviewId}`)
-    
-  }
-  const handleUpdateReview = (reviewId) => {
+  const handleUpdateReview = async (reviewId, text) => {
     console.log(`updating review ${reviewId}`)
-   
+    const response = await axios.put(API_URL + reviewId, { text })
+
+    setReviews(reviews.map((review) => {
+      if (review._id == reviewId) {
+        return response.data
+      }
+      else {
+        return review
+      }
+    }))
+
   }
-  
+
   useEffect(() => {
     getReviews(location.state.isbn)
     getUserStatus()
   }, [])
 
   const handleClick = (review) => {
-    console.log(typeof (location.state.isbn))
     postReview(review, location.state.isbn)
   }
 
@@ -83,29 +80,7 @@ const SingleBookDisplay = () => {
               <a href="/auth/google" style={{ textDecoration: 'underline' }}>here</a>
             </div>}
           {reviews.map((review, index) => (
-            // <div className='review' key={index}>
-            //   <img className='user-image' src={review.user.image} referrerPolicy="no-referrer"></img>
-            //   <div className='name-and-review'>
-            //     <div className='userName'>{review.user.displayName}</div>
-            //     <div className='reviewText'>{review.text}</div>
-            //   </div>
-            //   {/* {userId == review.user._id && */}
-            //     <div className="edit-delete-btns-container">
-            //       <FontAwesomeIcon
-            //         icon={faTrashCan}
-            //         className='delete-button'
-            //         onClick={() => handleDeleteClick(review._id)}
-            //       />
-            //       <FontAwesomeIcon
-            //         icon={faEdit}
-            //         className='edit-button'
-            //         onClick={() => handleEditClick(review._id)}
-            //       />
-            //     </div>
-            //   {/* } */}
-            // </div>
-            <Review handleDeleteClick={handleDeleteClick} review={review} handleUpdateReview={handleUpdateReview}/>
-
+            <Review handleDeleteClick={handleDeleteClick} review={review} handleUpdateReview={handleUpdateReview} userId={userId} />
           ))}
         </div>
       </div>

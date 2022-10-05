@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan, faEdit } from '@fortawesome/free-regular-svg-icons'
 
 
-const Review = ({ review, handleDeleteClick, handleUpdateReview }) => {
+const Review = ({ review, handleDeleteClick, handleUpdateReview, userId }) => {
     const [isEditing, setIsEditing] = useState(false)
     const [reviewInProgress, setReviewInProgress] = useState(review.text)
 
@@ -11,6 +11,7 @@ const Review = ({ review, handleDeleteClick, handleUpdateReview }) => {
     // toggles edit mode
     const toggleEdit = () => {
         setIsEditing((prev) => !prev)
+        setReviewInProgress(review.text)
     }
 
     const cancelEdit = () => {
@@ -25,13 +26,10 @@ const Review = ({ review, handleDeleteClick, handleUpdateReview }) => {
         e.preventDefault()
         toggleEdit()
         console.log('saved')
-       if(reviewInProgress!==review.text){
-        handleUpdateReview(review._id, reviewInProgress)
-       }
+        if (reviewInProgress !== review.text) {
+            handleUpdateReview(review._id, reviewInProgress)
+        }
     }
-
-
-
 
     return (
         <div className='review' >
@@ -53,7 +51,7 @@ const Review = ({ review, handleDeleteClick, handleUpdateReview }) => {
                     :
                     <div className='reviewText'>{review.text}</div>}
             </div>
-            {/* {userId == review.user._id && */}
+            {userId == review.user._id &&
             <div className="edit-delete-btns-container">
                 <FontAwesomeIcon
                     icon={faTrashCan}
@@ -66,7 +64,7 @@ const Review = ({ review, handleDeleteClick, handleUpdateReview }) => {
                     onClick={() => toggleEdit()}
                 />
             </div>
-            {/* } */}
+          } 
         </div>
     )
 }
