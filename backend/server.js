@@ -14,7 +14,7 @@ const port = process.env.PORT || 5000
 const app = express();
 
 connectDB()
-
+app.enable("trust proxy");
 app.use(express.json())
 app.use(urlencoded({extended: false}))
 app.use(cors())
