@@ -3,6 +3,12 @@
    position: relative;
 }
 
+@media(max-width: 800px) {
+    .dropdown{
+        display: none;
+    }
+}
+
 .dropdown-menu{
     background-color: white;
     padding: .75 rem;
