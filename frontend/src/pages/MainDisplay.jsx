@@ -6,20 +6,35 @@ import BookList from '../components/BookList';
 import Header from '../components/Header';
 import Title from '../components/Title';
 import Navbar from '../components/Navbar';
+import LoadingSpinner from '../components/LoadingSpinner';
+
 function MainDisplay() {
 
   //state
   const [bookLists, setBookLists] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   //fetch top 5 books of each genre from NYtimes
-  const getBookLists = async () => {
-    try {
-      const result = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=${process.env.REACT_APP_NY_TIMES_API_KEY}`)
-      setBookLists(result.data.results.lists)
-    } catch (error) {
-      console.log('something went wrong with call to nytimes' + error)
-    }
+  // const getBookLists = async () => {
+  //   try { 
+  //     const result = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=${process.env.REACT_APP_NY_TIMES_API_KEY}`)
+  //     setBookLists(result.data.results.lists)
+  //   } catch (error) {
+  //     console.log('something went wrong with call to nytimes' + error)
+  //   }
+  // }
+
+  const getBookLists = () => {
+ 
+      axios.get(`https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=${process.env.REACT_APP_NY_TIMES_API_KEY}`)
+      .then((result)=>{
+        setIsLoading(false)
+        setBookLists(result.data.results.lists) 
+      })
+      .catch((error)=>{console.log('something went wrong with call to nytimes' + error)})
+   
   }
+
 
   const getReviews = async ()=>{
     const response = await axios.get('/api/reviews/')
@@ -28,6 +43,7 @@ function MainDisplay() {
 
   useEffect(() => {
     // get top 5 books from each genre
+    setIsLoading(true)
     getBookLists()
     getReviews()
   }, [])
@@ -40,7 +56,9 @@ function MainDisplay() {
         subheading={'Authoritatively ranked lists of books sold in the United States, sorted by format and genre'}
       />
       <Navbar/>
-      {bookLists.slice(0, 8).map((genre, index) => (
+      {isLoading ? 
+        <LoadingSpinner/>
+      : bookLists.slice(0, 8).map((genre, index) => (
          <BookList listOfBooks={genre.books} 
                    genreHeading={genre.list_name}
                    genreEncoded={genre.list_name_encoded}

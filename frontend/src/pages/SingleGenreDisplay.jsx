@@ -7,24 +7,36 @@ import BookList from '../components/BookList'
 import Title from '../components/Title'
 import { useLocation } from 'react-router-dom'
 import Navbar from '../components/Navbar'
-
+import LoadingSpinner from '../components/LoadingSpinner'
 
 const SingleGenreDisplay = () => {
     const [bookList, setBookList] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
     const { genre } = useParams();
     const location = useLocation()
 
-    const getBookList = async (genre) => {
-        try {
-            const result = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/${genre}.json?api-key=${process.env.REACT_APP_NY_TIMES_API_KEY}`)
-            setBookList(result.data.results.books)
-        } catch (error) {
-            console.log('something went wrong with call to nytimes' + error)
-        }
+    // const getBookList = async (genre) => {
+    //     try {
+    //         const result = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/${genre}.json?api-key=${process.env.REACT_APP_NY_TIMES_API_KEY}`)
+    //         setBookList(result.data.results.books)
+    //     } catch (error) {
+    //         console.log('something went wrong with call to nytimes' + error)
+    //     }
+    // }
+
+    const getBookList = () => {
+        axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/${genre}.json?api-key=${process.env.REACT_APP_NY_TIMES_API_KEY}`)
+        .then((result)=>{
+          setIsLoading(false)
+          setBookList(result.data.results.books) 
+        })
+        .catch((error)=>{console.log('something went wrong with call to nytimes' + error)})
+ 
     }
 
 
     useEffect(() => {
+        setIsLoading(true)
         // get top 5 books from each genre
         getBookList(genre)
 
@@ -36,7 +48,9 @@ const SingleGenreDisplay = () => {
             <Navbar/>
             <div style={{ counterReset: 'book-rank' }}>
 
-                {bookList.map((book, index) => (
+                {isLoading?
+                <LoadingSpinner/>:
+                bookList.map((book, index) => (
                     <Xbook author={book.author}
                         title={book.title}
                         coverImageURL={book.book_image}
